@@ -47,6 +47,15 @@ class AppStyle{
   static TextStyle medium_20(Color color) => GoogleFonts.nunitoSans(
       color: color, fontSize: 20, fontWeight: MyFontWeight.medium);
 
+  static TextStyle semibold_22(Color color) => GoogleFonts.nunitoSans(
+      color: color, fontSize: 22, fontWeight: MyFontWeight.bold);
+
+  static TextStyle normal_22(Color color) => GoogleFonts.nunitoSans(
+      color: color, fontSize: 22, fontWeight: MyFontWeight.regular);
+
+  static TextStyle medium_22(Color color) => GoogleFonts.nunitoSans(
+      color: color, fontSize: 22, fontWeight: MyFontWeight.medium);
+
 
 
 
