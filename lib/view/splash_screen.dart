@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:logistics_app/helper/app_assets.dart';
 import 'package:logistics_app/main.dart';
+import 'package:logistics_app/services/db_storage.dart';
+import 'package:logistics_app/view/dashboard/dashboard.dart';
 import 'package:logistics_app/view/onboarding/onboarding.dart';
 
 
@@ -22,9 +24,20 @@ class _SplashScreenState extends State<SplashScreen> {
 
 
   inIt(){
-    Future.delayed(Duration(seconds: 3),(){
-      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_)=>OnboardingScreen()), (_)=>false);
-    });
+    DbStorage dbStorage = DbStorage();
+    var token = dbStorage.getToken();
+    if(token!=null){
+      Future.delayed(Duration(seconds: 3),(){
+        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_)=>Dashboard()), (_)=>false);
+      });
+    }else{
+      Future.delayed(Duration(seconds: 3),(){
+        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_)=>OnboardingScreen()), (_)=>false);
+      });
+    }
+
+
+
   }
 
   @override

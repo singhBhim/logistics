@@ -57,6 +57,10 @@ class AppStyle{
       color: color, fontSize: 22, fontWeight: MyFontWeight.medium);
 
 
+  static TextStyle bold_28(Color color) => GoogleFonts.nunitoSans(
+      color: color, fontSize: 28, fontWeight: MyFontWeight.bold);
+
+
 
 
 }

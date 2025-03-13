@@ -4,12 +4,12 @@ class AppStrings{
   static const skipToMainContents= "Skip to main content";
   static const loginToYourAccount= "Login to your account ";
   static const enterYourDetails= "Enter Your details to continue  ";
-  static const enterYourNumber= "Your Number";
-  static const emailAndNumber= "Email or mobile number";
+  static const enterYourNumber= "Your Email";
+  static const emailAndNumber= "Enter your email";
   static const forgotPassword= "Forget Password?";
   static const password= "Password";
   static const login= "Log In";
-  static const numberError= "Please enter mobile number or email";
+  static const numberError= "Please enter email";
   static const passwordError= "Please enter password";
   static const passwordLengthError= "Please enter password";
   static const driverDetails= "Driver Details";
@@ -31,4 +31,14 @@ class AppStrings{
   static const confirmMatchError= "Confirm does`t match!";
   static const emailAddress= "Email Address";
   static const emailContents= "Don’t worry! Enter your registered email or phone number, and we’ll send you instructions to reset your password.";
+static const otpVerify = 'OTP Verify';
+static const enterVerificationCode = 'Enter Verification Code';
+static const sentCodeEmail = "We`ve sent a code your email ";
+static const thisCodeExpire = "This code expire in";
+static const verifyCode = "Verify Code";
+static const backToLogin = "Back to Login";
+static const resendCode = "Didn’t receive the OTP? ";
+
+
+
 }

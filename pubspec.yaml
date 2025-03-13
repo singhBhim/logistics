@@ -38,27 +38,38 @@ dependencies:
   google_fonts: ^6.2.1
   flutter_easyloading: ^3.0.5
   get_storage: ^2.1.1
+  pinput: ^5.0.1
+  syncfusion_flutter_pdfviewer: ^28.2.5
+  syncfusion_flutter_signaturepad: ^28.2.5
+  url_launcher: ^6.3.1
+#  webview_flutter:
+  http: ^1.3.0
+  intl: ^0.19.0
+  google_maps_flutter: ^2.10.0
+  geolocator: ^13.0.2
+  flutter_polyline_points: ^2.1.0
+  geocoding: ^3.0.0
+  location: ^8.0.0
+  dropdown_button2: ^2.3.9
+
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  # The "flutter_lints" package below contains a set of recommended lints to
-  # encourage good coding practices. The lint set provided by the package is
-  # activated in the `analysis_options.yaml` file located at the root of your
-  # package. See that file for information about deactivating specific lint
-  # rules and activating additional ones.
   flutter_lints: ^5.0.0
 
-# For information on the generic Dart part of this file, see the
-# following page: https://dart.dev/tools/pub/pubspec
+  # To add assets to your application, add an app icons section, like this:
 
-# The following section is specific to Flutter packages.
+  flutter_launcher_icons: ^0.14.3
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/logistic_logo.png"
+
 flutter:
 
-  # The following line ensures that the Material Icons font is
-  # included with your application, so that you can use the icons in
-  # the material Icons class.
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:

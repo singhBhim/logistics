@@ -5,6 +5,8 @@ import 'package:logistics_app/helper/app_colors.dart';
 import 'package:logistics_app/helper/app_strings.dart';
 import 'package:logistics_app/helper/text_style.dart';
 import 'package:logistics_app/main.dart';
+import 'package:logistics_app/view/auth/driver_page.dart';
+import 'package:logistics_app/view/auth/login.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -39,8 +41,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     return Scaffold(
       appBar: AppBar(toolbarHeight: 0),
       bottomNavigationBar: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 20),
-        child: appButton(onPressed: (){},
+        padding: const EdgeInsets.only(left: 15,right: 15,bottom: 30),
+        child: appButton(onPressed: (){
+          Navigator.push(context, MaterialPageRoute(builder: (_)=>LoginPage()));
+        },
             text: AppStrings.skipToMainContents),
       ),
       body: Column(

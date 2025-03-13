@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:logistics_app/controller/auth_controller.dart';
 import 'package:logistics_app/helper/app_buttons.dart';
 import 'package:logistics_app/helper/app_colors.dart';
 import 'package:logistics_app/helper/app_strings.dart';
@@ -16,6 +18,8 @@ class ForgotPassword extends StatefulWidget {
 
 class _ForgotPasswordState extends State<ForgotPassword> {
   TextEditingController newController = TextEditingController();
+
+  final AuthController _authController = Get.put(AuthController());
 
 
   final _formKey = GlobalKey<FormState>();
@@ -44,9 +48,11 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 AppTextFields(
                   hintText: AppStrings.emailAndNumber,
                   controller: newController,
-                  validator: (v) {
-                    if (v == null || v.isEmpty) {
-                      return AppStrings.numberError;
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Email is required';
+                    } else if (!isValidEmail(value)) {
+                      return 'Enter a valid email';
                     }
                     return null;
                   },
@@ -55,10 +61,18 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 SizedBox(height: size.height * 0.05),
                 appButton(
                     onPressed: () {
-                      if (_formKey.currentState!.validate()) {}
+
+                      FocusScope.of(context).unfocus();
+                      if (_formKey.currentState!.validate()) {
+                        Map bodyData = {
+                          "email":newController.text.toString(),
+                        };
+                        _authController.forgotPasswordAPI(context, bodyData,false);
+                      }
                     },
                     minWidth: size.width,
                     text: AppStrings.send)
+
               ],
             ),
           ),
@@ -66,6 +80,4 @@ class _ForgotPasswordState extends State<ForgotPassword> {
       ),
     );
   }
-
-  ////
 }

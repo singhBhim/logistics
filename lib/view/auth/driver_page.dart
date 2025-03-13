@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:logistics_app/controller/auth_controller.dart';
 import 'package:logistics_app/helper/app_buttons.dart';
 import 'package:logistics_app/helper/app_colors.dart';
 import 'package:logistics_app/helper/app_strings.dart';
@@ -6,10 +8,11 @@ import 'package:logistics_app/helper/app_text_fields.dart';
 import 'package:logistics_app/helper/global_file.dart';
 import 'package:logistics_app/helper/text_style.dart';
 import 'package:logistics_app/main.dart';
-import 'package:logistics_app/view/auth/reset_password.dart';
+import 'package:logistics_app/view/dashboard/dashboard.dart';
 
 class DriverPage extends StatefulWidget {
-  const DriverPage({super.key});
+  final String driverName;
+  const DriverPage({super.key,required this.driverName});
 
   @override
   State<DriverPage> createState() => _DriverPageState();
@@ -19,14 +22,19 @@ class _DriverPageState extends State<DriverPage> {
   TextEditingController nameController = TextEditingController();
   TextEditingController companyController = TextEditingController();
   TextEditingController mcController = TextEditingController();
+  final AuthController _authController = Get.put(AuthController());
+
+  @override
+  void initState() {
+    super.initState();
+    nameController.text = widget.driverName.toString();
+  }
 
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: customAppbar(
-        text: AppStrings.driverDetails,
-      ),
+      appBar: customAppbar(text: AppStrings.driverDetails),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: size.width * 0.035),
         child: Form(
@@ -67,7 +75,6 @@ class _DriverPageState extends State<DriverPage> {
                   },
                 ),
                 SizedBox(height: size.height * 0.01),
-
                 Align(
                     alignment: Alignment.centerLeft,
                     child: Text(AppStrings.mcNumber,
@@ -83,15 +90,23 @@ class _DriverPageState extends State<DriverPage> {
                     return null;
                   },
                 ),
-
                 SizedBox(height: size.height * 0.05),
                 appButton(
                     onPressed: () {
+
+                      FocusScope.of(context).unfocus();
                       if (_formKey.currentState!.validate()) {
-                        Navigator.push(context, MaterialPageRoute(builder: (_)=>ResetPassword()));
+                        // Map bodyData = {
+                        //   "company_name":companyController.text.toString(),
+                        //   "mc_number":mcController.text.toString().trim(),
+                        //   "driver_name":nameController.text.toString().trim()
+                        // };
+                        _authController.addDriverDetailsAPI(context, nameController.text.toString().trim(),mcController.text.toString().trim(),companyController.text.toString());
+
                       }
                     },
                     minWidth: size.width,
+
                     text: AppStrings.submit)
               ],
             ),

@@ -10,8 +10,9 @@ class AppTextFields extends StatelessWidget {
   final void Function(String)? onChanged;
   final TextInputType? keyboardType;
   final String hintText;
-  Color? fillColor = AppColors.black10;
+  Color? fillColor = AppColors.red;
     AppTextFields(
+
       {super.key,
       this.inputFormatters,
       this.keyboardType,
@@ -24,7 +25,7 @@ class AppTextFields extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      style: AppStyle.medium_14(AppColors.black50),
+      style: AppStyle.semibold_16(AppColors.black),
       inputFormatters: inputFormatters,
       controller: controller,
       keyboardType: keyboardType,
@@ -34,7 +35,7 @@ class AppTextFields extends StatelessWidget {
         filled: true,
         hintText: hintText,
         hintStyle: AppStyle.normal_14(AppColors.black50),
-        fillColor: fillColor,
+        fillColor: Colors.blueGrey.withOpacity(0.1),
         errorBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10.0),
             borderSide: BorderSide(color: AppColors.black50)),
