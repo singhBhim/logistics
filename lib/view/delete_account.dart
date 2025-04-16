@@ -70,7 +70,6 @@ class _DeleteUserAccountState extends State<DeleteUserAccount> {
             key: _formKey,
             child: Column(
               // crossAxisAlignment: CrossAxisAlignment.start,
-              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
