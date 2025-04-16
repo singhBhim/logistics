@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     size = MediaQuery.sizeOf(context);
     return GetMaterialApp(
-      title: 'Logistics',
+      title: 'TraceBill',
       debugShowCheckedModeBanner: false,
       builder: EasyLoading.init(),
 

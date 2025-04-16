@@ -1,7 +1,7 @@
 
 
 class ApiEndPoints{
-  static const baseUrl = 'https://logistics-backend-1ycz.onrender.com';
+  static const baseUrl = 'https://api.tracebill.com';
   static const login = '$baseUrl/app/login';
   static const addDriverDetails = '$baseUrl/app/driver';
   static const getDriver = '$baseUrl/app/get_driver';

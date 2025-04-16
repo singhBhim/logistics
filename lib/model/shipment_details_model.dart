@@ -50,14 +50,19 @@ class ShipmentDetailsData {
   int? weight;
   String? dimensions;
   String? typeOfGoods;
-  String? uploadedBol;
+  dynamic uploadedBol;
   String? driverAccept;
   dynamic customerSign;
   String? driverSign;
-  dynamic review;
+  String? driverLocation;
+  String? review;
+  dynamic reviewText;
+  String? qrcode;
+  String? brokerDispatchSheet;
+  String? carrierDispatchSheet;
+  bool? brokerApprove;
   DateTime? createdAt;
   int? v;
-  String? driverLocation;
 
   ShipmentDetailsData({
     this.id,
@@ -84,10 +89,15 @@ class ShipmentDetailsData {
     this.driverAccept,
     this.customerSign,
     this.driverSign,
+    this.driverLocation,
     this.review,
+    this.reviewText,
+    this.qrcode,
+    this.brokerDispatchSheet,
+    this.carrierDispatchSheet,
+    this.brokerApprove,
     this.createdAt,
     this.v,
-    this.driverLocation,
   });
 
   factory ShipmentDetailsData.fromJson(Map<String, dynamic> json) => ShipmentDetailsData(
@@ -115,10 +125,15 @@ class ShipmentDetailsData {
     driverAccept: json["driverAccept"],
     customerSign: json["customer_sign"],
     driverSign: json["driver_sign"],
+    driverLocation: json["driver_location"],
     review: json["review"],
+    reviewText: json["reviewText"],
+    qrcode: json["qrcode"],
+    brokerDispatchSheet: json["broker_dispatch_sheet"],
+    carrierDispatchSheet: json["carrier_dispatch_sheet"],
+    brokerApprove: json["broker_approve"],
     createdAt: json["created_at"] == null ? null : DateTime.parse(json["created_at"]),
     v: json["__v"],
-    driverLocation: json["driver_location"],
   );
 
   Map<String, dynamic> toJson() => {
@@ -146,10 +161,15 @@ class ShipmentDetailsData {
     "driverAccept": driverAccept,
     "customer_sign": customerSign,
     "driver_sign": driverSign,
+    "driver_location": driverLocation,
     "review": review,
+    "reviewText": reviewText,
+    "qrcode": qrcode,
+    "broker_dispatch_sheet": brokerDispatchSheet,
+    "carrier_dispatch_sheet": carrierDispatchSheet,
+    "broker_approve": brokerApprove,
     "created_at": createdAt?.toIso8601String(),
     "__v": v,
-    "driver_location": driverLocation,
   };
 }
 

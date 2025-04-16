@@ -66,7 +66,7 @@ dev_dependencies:
 flutter_icons:
   android: true
   ios: true
-  image_path: "assets/images/logistic_logo.png"
+  image_path: "assets/images/logo.png"
 
 flutter:
 

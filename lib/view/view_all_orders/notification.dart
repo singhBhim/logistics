@@ -77,8 +77,8 @@ class NotificationListState extends State<NotificationListPage> {
                                       style: AppStyle.medium_14(AppColors.black)),
                                   subtitle: Text(
                                       snapshot
-                                          .data![index].shipmentId!.description
-                                          .toString(),
+                                          .data![index].text??''
+                                          ,
                                       overflow: TextOverflow.ellipsis,
                                       maxLines: 2,
                                       style:
@@ -89,7 +89,7 @@ class NotificationListState extends State<NotificationListPage> {
                                 children: [
                                   Text(
                                       formatDate(snapshot
-                                          .data![index].shipmentId!.shippingDate
+                                          .data![index].createdAt
                                           .toString()),
                                       style: AppStyle.medium_14(AppColors.black)),
                                   TextButton(
@@ -97,8 +97,12 @@ class NotificationListState extends State<NotificationListPage> {
                                         await _dashboardController
                                             .readNotificationAPI(context,
                                             snapshot
-                                                .data![index].shipmentId!.id
+                                                .data![index].id
                                                 .toString());
+
+print("d---------${snapshot
+    .data![index].id
+    .toString()}");
 
                                         setState(() {});
                                       },

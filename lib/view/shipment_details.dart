@@ -9,6 +9,7 @@ import 'package:logistics_app/main.dart';
 import 'package:logistics_app/model/shipment_details_model.dart';
 import 'package:logistics_app/view/customer_signature.dart';
 import 'package:logistics_app/view/loading_bill.dart';
+import 'package:logistics_app/view/qr_code%20page.dart';
 import 'package:logistics_app/view/shipment_tracking.dart';
 
 class ShipmentDetails extends StatefulWidget {
@@ -22,15 +23,12 @@ class ShipmentDetails extends StatefulWidget {
 final DashboardController _dashboardController = Get.put(DashboardController());
 
 class _ShipmentDetailsState extends State<ShipmentDetails> {
-
-
-  Future<void> refreshData()async{
+  Future<void> refreshData() async {
     _dashboardController.shipmentDetailsAPi(
         context, widget.shipmentId.toString());
-    setState(() {
-
-    });
+    setState(() {});
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,7 +71,8 @@ class _ShipmentDetailsState extends State<ShipmentDetails> {
                           child: Column(
                             children: [
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Expanded(
                                     child: Row(
@@ -94,7 +93,8 @@ class _ShipmentDetailsState extends State<ShipmentDetails> {
                                     ),
                                   ),
                                   Row(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Text("Amt : ₹",
                                           style: AppStyle.medium_14(
@@ -118,13 +118,14 @@ class _ShipmentDetailsState extends State<ShipmentDetails> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text("Shipment Status",
-                                        style:
-                                            AppStyle.medium_16(AppColors.black)),
+                                        style: AppStyle.medium_16(
+                                            AppColors.black)),
                                     Container(
                                       padding: EdgeInsets.symmetric(
                                           horizontal: 8, vertical: 3),
                                       decoration: BoxDecoration(
-                                          color: data.driverLocation == 'transit'
+                                          color: data.driverLocation ==
+                                                  'transit'
                                               ? AppColors.red.withOpacity(0.2)
                                               : data.driverLocation == 'running'
                                                   ? AppColors.orange
@@ -135,7 +136,8 @@ class _ShipmentDetailsState extends State<ShipmentDetails> {
                                                           .withOpacity(0.2)
                                                       : AppColors.green
                                                           .withOpacity(0.2),
-                                          borderRadius: BorderRadius.circular(4)),
+                                          borderRadius:
+                                              BorderRadius.circular(4)),
                                       child: Text(
                                         data.driverLocation
                                                 ?.toString()
@@ -168,14 +170,14 @@ class _ShipmentDetailsState extends State<ShipmentDetails> {
                                           color: AppColors.themeColor),
                                       SizedBox(width: 10),
                                       Text("Pickup From",
-                                          style:
-                                              AppStyle.medium_14(AppColors.black))
+                                          style: AppStyle.medium_14(
+                                              AppColors.black))
                                     ]),
                                   ),
                                   Flexible(
                                     child: Text(data.pickupLocation.toString(),
-                                        style:
-                                            AppStyle.medium_14(AppColors.black)),
+                                        style: AppStyle.medium_14(
+                                            AppColors.black)),
                                   )
                                 ],
                               ),
@@ -193,8 +195,8 @@ class _ShipmentDetailsState extends State<ShipmentDetails> {
                                   ])),
                                   Flexible(
                                     child: Text(data.dropLocation.toString(),
-                                        style:
-                                            AppStyle.medium_14(AppColors.black)),
+                                        style: AppStyle.medium_14(
+                                            AppColors.black)),
                                   )
                                 ],
                               ),
@@ -213,7 +215,9 @@ class _ShipmentDetailsState extends State<ShipmentDetails> {
                                             Text("Customer Name",
                                                 style: AppStyle.medium_14(
                                                     AppColors.black)),
-                                            Text(data.customerId!.name.toString(),
+                                            Text(
+                                                data.customerId!.name
+                                                    .toString(),
                                                 style: AppStyle.medium_14(
                                                     AppColors.black50)),
                                           ])
@@ -252,7 +256,8 @@ class _ShipmentDetailsState extends State<ShipmentDetails> {
                                                 style: AppStyle.medium_14(
                                                     AppColors.black)),
                                             Text(
-                                                data.driverId!.name.toString() ??
+                                                data.driverId!.name
+                                                        .toString() ??
                                                     '',
                                                 style: AppStyle.medium_14(
                                                     AppColors.black50)),
@@ -303,7 +308,8 @@ class _ShipmentDetailsState extends State<ShipmentDetails> {
                                     ),
                                   ),
                                   Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Text("Shipment Name",
                                           style: AppStyle.semibold_16(
@@ -320,7 +326,8 @@ class _ShipmentDetailsState extends State<ShipmentDetails> {
                                       const EdgeInsets.symmetric(vertical: 5),
                                   child: Divider(color: AppColors.black10)),
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Flexible(
                                     child: Column(
@@ -374,11 +381,13 @@ class _ShipmentDetailsState extends State<ShipmentDetails> {
                                 ],
                               ),
                               Padding(
-                                padding: const EdgeInsets.symmetric(vertical: 5),
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 5),
                                 child: Divider(color: AppColors.black10),
                               ),
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Flexible(
                                     child: Column(
@@ -443,98 +452,117 @@ class _ShipmentDetailsState extends State<ShipmentDetails> {
                         data.driverLocation == 'delivered'
                             ? SizedBox()
                             : Container(
-                          margin: EdgeInsets.symmetric(vertical: size.height * 0.02),
-                          padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                          decoration: BoxDecoration(
-                            color: AppColors.blueGrey,
-                            borderRadius: BorderRadius.circular(30),
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                          //    Cancel Button
-                              data.driverLocation == 'Reached'?SizedBox():
-                              Expanded(
-                                child: MaterialButton(
-                                  onPressed: () {
-                                    cancelShipmentDialog(context, () async {
-
-                                      await _dashboardController.cancelShipmentAPI(
-                                        context,
-                                        data.id.toString(),
-                                      );
-
-                                    });
-                                  },
-                                  height: size.height * 0.05,
-                                  shape: RoundedRectangleBorder(
-                                    side: BorderSide(color: AppColors.themeColor),
-                                    borderRadius: BorderRadius.circular(30),
-                                  ),
-                                  child: Text(
-                                    "Cancel",
-                                    style: AppStyle.medium_16(AppColors.themeColor),
-                                  ),
+                                margin: EdgeInsets.symmetric(
+                                    vertical: size.height * 0.02),
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 12, vertical: 8),
+                                decoration: BoxDecoration(
+                                  color: AppColors.blueGrey,
+                                  borderRadius: BorderRadius.circular(30),
                                 ),
-                              ),
-                              SizedBox(width: 10),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    //    Cancel Button
+                                    data.driverLocation == 'Reached'
+                                        ? SizedBox()
+                                        : Expanded(
+                                            child: MaterialButton(
+                                              onPressed: () {
+                                                cancelShipmentDialog(context,
+                                                    () async {
+                                                  await _dashboardController
+                                                      .cancelShipmentAPI(
+                                                    context,
+                                                    data.id.toString(),
+                                                  );
+                                                });
+                                              },
+                                              height: size.height * 0.05,
+                                              shape: RoundedRectangleBorder(
+                                                side: BorderSide(
+                                                    color:
+                                                        AppColors.themeColor),
+                                                borderRadius:
+                                                    BorderRadius.circular(30),
+                                              ),
+                                              child: Text(
+                                                "Cancel",
+                                                style: AppStyle.medium_16(
+                                                    AppColors.themeColor),
+                                              ),
+                                            ),
+                                          ),
+                                    SizedBox(width: 10),
 
-                              // Dynamic Button
-                              Expanded(
-                                child: MaterialButton(
-                                  onPressed: () {
-                                    if (data.driverLocation == 'running') {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (_) => ShipmentTracking(
-                                            shipmentId: data.id.toString(),
-                                            dropLocation: data.dropLocation.toString(),
-                                            pickupLocation: data.pickupLocation.toString(),
-                                            fromDetails: true,
+                                    // Dynamic Button
+                                    Expanded(
+                                      child: MaterialButton(
+                                        onPressed: () {
+                                          if (data.driverLocation ==
+                                              'running') {
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (_) =>
+                                                    ShipmentTracking(
+                                                  shipmentId:
+                                                      data.id.toString(),
+                                                  dropLocation: data
+                                                      .dropLocation
+                                                      .toString(),
+                                                  pickupLocation: data
+                                                      .pickupLocation
+                                                      .toString(),
+                                                  fromDetails: true,
+                                                ),
+                                              ),
+                                            );
+                                          } else if (data.driverLocation ==
+                                              'Reached') {
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (_) => QrCOdePage(
+                                                  qrcodeLink: data.qrcode.toString(),
+                                                ),
+                                              ),
+                                            );
+                                          } else {
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (_) => LoadingBill(
+                                                    shipmentId:
+                                                        data.id.toString()),
+                                              ),
+                                            );
+                                          }
+                                        },
+                                        height: size.height * 0.05,
+                                        color: AppColors.themeColor,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(30),
+                                        ),
+                                        child: FittedBox(
+                                          child: Text(
+                                            data.driverLocation == 'running'
+                                                ? 'TRACKING'
+                                                : data.driverLocation ==
+                                                        'Reached'
+                                                    ? 'VIEW QR'
+                                                    : "NEXT",
+                                            style: AppStyle.medium_16(
+                                                AppColors.whiteColor),
                                           ),
                                         ),
-                                      );
-                                    } else if (data.driverLocation == 'Reached') {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (_) => CustomerSignature(
-                                            fromTrackingPage: false,
-                                            shipmentId: data.id.toString(),
-                                          ),
-                                        ),
-                                      );
-                                    } else {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (_) => LoadingBill(shipmentId: data.id.toString()),
-                                        ),
-                                      );
-                                    }
-                                  },
-                                  height: size.height * 0.05,
-                                  color: AppColors.themeColor,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(30),
-                                  ),
-                                  child: FittedBox(
-                                    child: Text(
-                                      data.driverLocation == 'running'
-                                          ? 'Tracking'
-                                          : data.driverLocation == 'Reached'
-                                          ? 'Customer Signature'
-                                          : "Next",
-                                      style: AppStyle.medium_16(AppColors.whiteColor),
+                                      ),
                                     ),
-                                  ),
+                                  ],
                                 ),
-                              ),
-                            ],
-                          ),
-                        )
-
+                              )
                       ],
                     ),
                   );

@@ -15,6 +15,7 @@ import 'package:logistics_app/services/db_storage.dart';
 import 'package:logistics_app/view/auth/login.dart';
 import 'package:logistics_app/view/customer_signature.dart';
 import 'package:logistics_app/view/dashboard/dashboard.dart';
+import 'package:logistics_app/view/qr_code%20page.dart';
 import 'package:logistics_app/view/shipment_tracking.dart';
 import 'package:http/http.dart' as http;
 
@@ -249,6 +250,10 @@ class DashboardController extends GetxController {
           .getRequest("${ApiEndPoints.reachedLocation}$shipmentId");
       var resData = json.decode(await response.stream.bytesToString());
 
+      print("------->>>>$resData");
+
+
+
       if (response.statusCode == 200) {
         if (resData['status'] == true) {
           customSnackBar(resData['message']);
@@ -257,7 +262,7 @@ class DashboardController extends GetxController {
               context,
               MaterialPageRoute(
                   builder: (_) =>
-                      CustomerSignature(shipmentId: shipmentId.toString())));
+                      QrCOdePage(qrcodeLink: resData['data']['qrcode'].toString())));
         } else {
           customSnackBar(resData['message'], isError: true);
         }
@@ -359,6 +364,7 @@ class DashboardController extends GetxController {
 
   // ready notifications
   Future<void> readNotificationAPI(BuildContext context, var id) async {
+    print( ApiEndPoints.readNotifications);
     DbStorage dbStorage = DbStorage();
     var token = dbStorage.getToken();
     EasyLoading.show(status: 'Loading...'); // Show loading indicator
@@ -370,8 +376,8 @@ class DashboardController extends GetxController {
       var request = http.Request(
           'POST',
           Uri.parse(
-              'https://logistics-backend-1ycz.onrender.com/app/read-notification'));
-      request.body = json.encode({"shipmentId": id});
+              ApiEndPoints.readNotifications));
+      request.body = json.encode({"id": id});
       request.headers.addAll(headers);
 
       http.StreamedResponse response = await request.send();

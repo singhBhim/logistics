@@ -55,8 +55,8 @@ class _DeleteUserAccountState extends State<DeleteUserAccount> {
           preferredSize: Size.fromHeight(60),
           child: AppBar(
             backgroundColor: AppColors.themeColor,
+            iconTheme: IconThemeData(color: Colors.white),
             centerTitle: true,
-            leading: const SizedBox(),
             title: Text('Account',
                 style: GoogleFonts.poppins(
                     color: Colors.white,
